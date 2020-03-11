@@ -6,6 +6,12 @@ const movieSelect = document.getElementById('movie');
 
 let ticketPrice = +movieSelect.value;
 
+//Save selected movie data in local storage
+function setMovieData(index, price){
+	localStorage.setItem('index', index);
+	localStorage.setItem('price', price)
+}
+
 function updateSelectedCount(){
 	const selectedSeats = document.querySelectorAll('.row .seat.selected');
 
@@ -33,6 +39,7 @@ function updateSelectedCount(){
 //this event gets triggered movie is selected
 movieSelect.addEventListener('change', (e) => {
 	ticketPrice  = +e.target.value;
+	setMovieData(e.target.selectedIndex, e.target.value);
 	updateSelectedCount();
 });
 
