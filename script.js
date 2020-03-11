@@ -3,7 +3,9 @@ const seats = document.querySelectorAll('.row .seat:not(.occupied)');
 const count = document.getElementById('count');
 const total = document.getElementById('total');
 const movieSelect = document.getElementById('movie');
-addToUi();
+
+addToUi();//add data to UI 
+
 let ticketPrice = +movieSelect.value;
 
 //Get data from local storage and add it to UI
@@ -36,7 +38,6 @@ function setMovieData(index, price){
 function updateSelectedCount(){
 	const selectedSeats = document.querySelectorAll('.row .seat.selected');
 
-
 	//copy selected seats into an arr
 	//we will use spread operator it copies the elments of an array
 	const seatsIndex = [...selectedSeats].map( (seat) => [...seats].indexOf(seat));
@@ -44,7 +45,6 @@ function updateSelectedCount(){
 	// Now we need to store seatsIndex in local storage
 	localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
 
-	// console.log(selectedSeats);
 	// get the length of the node list
 	const selectedSeatCount = selectedSeats.length;
 	// console.log(selectedSeatCount);
@@ -66,7 +66,6 @@ container.addEventListener('click', (e) => {
 		updateSelectedCount();
 	}
 });
-
 
 //set counts and total
 updateSelectedCount();
